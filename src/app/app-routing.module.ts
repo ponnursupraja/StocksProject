@@ -6,9 +6,13 @@ import { StockDetailComponent } from './stocks/stock-detail/stock-detail.compone
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { SummaryComponent } from './summary/summary.component';
 import { SellCartComponent } from './sell-cart/sell-cart.component';
+import { LoginComponent } from './login/login.component';
+import { ResgistrationComponent } from './resgistration/resgistration.component';
 
 
 const appRoutes : Routes =[
+{path:'login', component : LoginComponent},
+{path:'registration', component : ResgistrationComponent},
 {path:'', redirectTo:'/stocks',pathMatch:'full'},
 { path :'stocks' , component: StocksComponent,children :[
 {path:':id',component:StockDetailComponent}

@@ -24,6 +24,8 @@ import { PriceHistorySerivce } from './stocks/price-history.service';
 import { SummaryService } from './summary/summary.service';
 import { SellCartComponent } from './sell-cart/sell-cart.component';
 import { SellCartService } from './sell-cart/sell-cart.service';
+import { LoginComponent } from './login/login.component';
+import { ResgistrationComponent } from './resgistration/resgistration.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { SellCartService } from './sell-cart/sell-cart.service';
     DropdownDirective,
     SummaryComponent,
     SellCartComponent,
+    LoginComponent,
+    ResgistrationComponent,
   ],
   imports: [
     BrowserModule,
