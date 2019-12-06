@@ -8,14 +8,17 @@ import { ShoppingCartService}  from '../shopping-cart/shopping-cart.service';
 import { SummaryService } from '../summary/summary.service';
 import { Summary } from '../summary/summary.model';
 import { SellCartService } from '../sell-cart/sell-cart.service';
-import { Observable } from 'rxjs';
+// import { Observable } from 'rxjs';
 import { Registration } from '../registration/registration.model';
+import { Observable} from 'rxjs/Observable';
+// import { Map } from '@'
+import { of } from 'rxjs/observable/of';
 
 @Injectable()
 export class DataStorageService{
 
 res : any ='';
-
+public responseCache = new Map();
 
   constructor(private http: HttpClient,private stockservice : StockService,private phService : PriceHistorySerivce,
     private scService : ShoppingCartService,private summaryservice : SummaryService,private sellcartService : SellCartService){
@@ -28,6 +31,30 @@ res : any ='';
         this.stockservice.setStocks(stocks);
       })
   }
+
+  // public getCacheList(): Observable<any>{
+  //   const listFromCache = this.responseCache.get(this.url_val);
+  //   if (listFromCache) {
+  //     return of(listFromCache);
+  //   }
+  //   const response = this.http.get<any>(this.url_val);
+  //   response.subscribe(beers => this.responseCache.set(this.url_val, beers));
+  //   return response;
+  // }
+  
+
+
+ ondummyPastWeek(symbol : string):Observable<any>{
+  let url_val ='http://ec2-18-222-112-169.us-east-2.compute.amazonaws.com/companyStockHistory/currentWeek/'+symbol;
+     const listFromCache = this.responseCache.get(url_val);
+    if (listFromCache) {
+      return of(listFromCache);
+    }
+    const response = this.http.get<any>(url_val);
+    response.subscribe(beers => this.responseCache.set(url_val, beers));
+    return response;
+
+ }
 
 
   onClickCurrentDay(symbol:string){
@@ -125,9 +152,9 @@ res : any ='';
 
 
 register(details : Registration){
-this.http.post('',details).subscribe(response =>{
+// this.http.post('',details).subscribe(response =>{
 
-})
+// })
 }
 
 

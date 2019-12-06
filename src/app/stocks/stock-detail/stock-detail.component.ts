@@ -27,7 +27,7 @@ export class StockDetailComponent implements OnInit{
  public minDate: Date = new Date ("05/07/2009");
  public maxDate: Date = new Date ("08/27/2020");
  public value: Date = new Date ();
-
+pastPrice : DateModel[];
  open = false;
 
   constructor(private stockservice : StockService,private dsService :DataStorageService,
@@ -44,7 +44,13 @@ export class StockDetailComponent implements OnInit{
       }
     )
 
-  }
+this.dsService.ondummyPastWeek(this.stock.symbol).subscribe(res => (console.log(res)));
+
+};
+
+
+
+  
 
   change(){
     this.open = !this.open;
