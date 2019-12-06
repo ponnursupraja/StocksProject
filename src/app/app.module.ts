@@ -25,7 +25,7 @@ import { SummaryService } from './summary/summary.service';
 import { SellCartComponent } from './sell-cart/sell-cart.component';
 import { SellCartService } from './sell-cart/sell-cart.service';
 import { LoginComponent } from './login/login.component';
-import { ResgistrationComponent } from './resgistration/resgistration.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,7 @@ import { ResgistrationComponent } from './resgistration/resgistration.component'
     SummaryComponent,
     SellCartComponent,
     LoginComponent,
-    ResgistrationComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,

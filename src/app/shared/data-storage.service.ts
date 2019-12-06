@@ -9,11 +9,13 @@ import { SummaryService } from '../summary/summary.service';
 import { Summary } from '../summary/summary.model';
 import { SellCartService } from '../sell-cart/sell-cart.service';
 import { Observable } from 'rxjs';
+import { Registration } from '../registration/registration.model';
 
 @Injectable()
 export class DataStorageService{
 
 res : any ='';
+
 
   constructor(private http: HttpClient,private stockservice : StockService,private phService : PriceHistorySerivce,
     private scService : ShoppingCartService,private summaryservice : SummaryService,private sellcartService : SellCartService){
@@ -29,7 +31,7 @@ res : any ='';
 
 
   onClickCurrentDay(symbol:string){
-    this.http.get<DateModel[]>('http://ec2-18-222-112-169.us-east-2.compute.amazonaws.com/companyStockHistory/currentDay/'+symbol)
+    this.http.get<DateModel[]>('http://ec2-18-222-112-169.us-east-2.compute.amazonaws.com/companyStockHistory/currentDay/symbol')
     .subscribe(response =>
       {
         this.phService.setDates(response);
@@ -52,9 +54,7 @@ res : any ='';
 
   onClickpastWeek(symbol : string){
 
-    this.http.get<DateModel[]>('http://ec2-18-222-112-169.us-east-2.compute.amazonaws.com/companyStockHistory/currentWeek/symbol',{
-      params : new HttpParams().set('symbol',symbol)
-    })
+    this.http.get<DateModel[]>('http://ec2-18-222-112-169.us-east-2.compute.amazonaws.com/companyStockHistory/currentWeek/'+symbol)
     .subscribe(response =>
       {
         this.phService.setDates(response);
@@ -124,6 +124,11 @@ res : any ='';
   }
 
 
+register(details : Registration){
+this.http.post('',details).subscribe(response =>{
+
+})
+}
 
 
 

@@ -7,12 +7,12 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { SummaryComponent } from './summary/summary.component';
 import { SellCartComponent } from './sell-cart/sell-cart.component';
 import { LoginComponent } from './login/login.component';
-import { ResgistrationComponent } from './resgistration/resgistration.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 
 const appRoutes : Routes =[
 {path:'login', component : LoginComponent},
-{path:'registration', component : ResgistrationComponent},
+{path:'registration', component : RegistrationComponent},
 {path:'', redirectTo:'/stocks',pathMatch:'full'},
 { path :'stocks' , component: StocksComponent,children :[
 {path:':id',component:StockDetailComponent}
